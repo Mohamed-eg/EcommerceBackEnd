@@ -6,8 +6,8 @@ cloudinary.config({
   api_key: "983815788533856",
   api_secret: "oh9O_OxeZr2hm8soW9m_auj-2dQ",
 });
-
-const storage = new multer.memoryStorage();
+// Set up storage (in memory or on disk)
+const storage = new multer.memoryStorage();// or use multer.diskStorage()
 
 async function imageUploadUtil(file) {
   const result = await cloudinary.uploader.upload(file, {
@@ -16,7 +16,6 @@ async function imageUploadUtil(file) {
 
   return result;
 }
-
-const upload = multer({ storage });
+const upload = multer({ storage }); //instad of multer({ storage : storage });
 
 module.exports = { upload, imageUploadUtil };
